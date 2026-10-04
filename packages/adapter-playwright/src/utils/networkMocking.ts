@@ -33,12 +33,16 @@ export class NetworkMocking {
             ? JSON.stringify(options.body)
             : undefined;
 
-      await route.fulfill({
-        status,
-        contentType: options.contentType || (typeof options.body === 'object' ? 'application/json' : 'text/plain'),
-        headers: options.headers,
-        body: bodyContent
-      });
+      try {
+        await route.fulfill({
+          status,
+          contentType: options.contentType || (typeof options.body === 'object' ? 'application/json' : 'text/plain'),
+          headers: options.headers,
+          body: bodyContent
+        });
+      } catch {
+        // Safe ignore if page unrouted or navigated away during delay
+      }
     });
   }
 

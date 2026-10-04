@@ -13,13 +13,19 @@
 | [`@script-crux/core-shared`](./packages/core-shared) | `1.0.0` | Central logger, schema-driven environment validator (`EnvValidator`), entity lifecycle manager (`DisposableEntityManager`), and crypto helpers. |
 | [`@script-crux/adapter-axios`](./packages/adapter-axios) | `1.0.0` | Resilient HTTP client wrapper with distributed tracing (`X-Correlation-Id`), latency SLA profiling, runtime contract validation, and retries. |
 | [`@script-crux/adapter-playwright`](./packages/adapter-playwright) | `1.0.0` | Page object abstractions (`BasePage`), `@Step` decorators, soft assertion engine (`SoftAssert`), network fault mocking (`NetworkMocking`), and SSE stream helpers. |
-| [`@script-crux/core-api`](./packages/core-api) | `1.0.0` | Database clients (PostgreSQL, MongoDB), schema validation, and test data management utilities. |
+| [`@script-crux/core-api`](./packages/core-api) | `1.0.0` | Testcontainers infrastructure (`PostgresContainerManager`, `RedisContainerManager`), `DockerDetector`, and database clients. |
 
 ---
 
 ## 🌟 Key Architectural Capabilities
 
-### 1. Distributed Tracing & Latency SLA Profiling (`adapter-axios`)
+### 1. Testcontainers & Ephemeral Infrastructure (`core-api`)
+- **Automated Docker Probing**: `DockerDetector.isDockerAvailable()` automatically detects if a Docker daemon is active.
+- **Ephemeral PostgreSQL Containers**: `PostgresContainerManager.start()` boots dedicated, throwaway PostgreSQL database containers on dynamic ports for state isolation with automatic graceful fallback.
+- **Ephemeral Redis Containers**: `RedisContainerManager.start()` manages throwaway Redis instances for caching and pub/sub message verification.
+
+### 2. Distributed Tracing & Latency SLA Profiling (`adapter-axios`)
+
 - **Correlation ID Tracking**: Automatically injects `X-Correlation-Id` and `X-Request-Id` headers into all outbound requests.
 - **Latency SLA Profiler**: Automatically benchmarks request duration (in milliseconds), flags SLA threshold breaches, and exposes telemetry via `client.getLastTelemetry()`.
 - **Runtime Schema Validation**: Enforces API contract schemas via `getAndValidate<T>()` and `postAndValidate<T>()` throwing typed `ContractValidationError`.

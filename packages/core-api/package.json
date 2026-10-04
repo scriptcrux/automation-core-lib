@@ -19,11 +19,12 @@
   },
   "dependencies": {
     "@script-crux/core-shared": "workspace:*",
+    "@testcontainers/postgresql": "^12.2.0",
     "mongodb": "^7.3.0",
-    "pg": "^8.22.0"
+    "pg": "^8.22.0",
+    "testcontainers": "^12.2.0"
   },
   "devDependencies": {
     "@types/pg": "^8.20.0"
   }
 }
-

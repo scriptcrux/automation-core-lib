@@ -8,6 +8,10 @@ export type { IDbClient } from './database/idbClient.js';
 export { PostgresClient } from './database/postgresClient.js';
 export { MongoClient } from './database/mongoClient.js';
 
+// Testcontainers Infrastructure & Ephemeral Container Managers
+export { DockerDetector, PostgresContainerManager, RedisContainerManager } from './containers/index.js';
+export type { IContainerInstance, PostgresContainerOptions, RedisContainerOptions } from './containers/index.js';
+
 // Network Core
 export { ApiClient } from './api/apiClient.js';
 
