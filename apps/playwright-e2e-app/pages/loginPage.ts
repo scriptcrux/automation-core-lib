@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage, Step } from "@script-crux/adapter-playwright";
+import { Locator, Page } from '@playwright/test';
+import { BasePage, Step } from '@script-crux/adapter-playwright';
 
 export class LoginPage extends BasePage {
   private readonly usernameInput: Locator;
@@ -13,19 +13,19 @@ export class LoginPage extends BasePage {
     this.loginButton = page.locator('[data-test="login-button"]');
   }
 
-  @Step("Enter username")
+  @Step('Enter username')
   async enterUsername(user: string): Promise<void> {
-    await this.fillInputField(this.usernameInput, user, "Username Input Box");
+    await this.fillInputField(this.usernameInput, user, 'Username Input Box');
   }
 
-  @Step("Enter password")
+  @Step('Enter password')
   async enterPassword(pass: string): Promise<void> {
-    await this.fillInputField(this.passwordInput, pass, "Password Input Box");
+    await this.fillInputField(this.passwordInput, pass, 'Password Input Box');
   }
 
-  @Step("Click submit login button")
+  @Step('Click submit login button')
   async clickSubmit(): Promise<void> {
-    await this.clickElement(this.loginButton, "Submit Login Action Button");
+    await this.clickElement(this.loginButton, 'Submit Login Action Button');
   }
 
   // @Step('Login with valid user credentials')

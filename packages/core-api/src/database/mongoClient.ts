@@ -1,5 +1,5 @@
 import { MongoClient as MongoDriver, Db } from 'mongodb';
-import { IDbClient } from './idbClient';
+import { IDbClient } from './idbClient.js';
 import { TestLogger } from '@script-crux/core-shared';
 
 export class MongoClient implements IDbClient {

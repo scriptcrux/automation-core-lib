@@ -1,6 +1,6 @@
 // packages/adapter-axios/src/index.ts
 
-export { BaseAxiosClient } from './base-client';
-export type { HttpClientEnvConfig } from './base-client';
-export { FrameworkApiError } from './errors/framework-error';
-export type { ILogger } from './logging/logger.interface';
+export { BaseAxiosClient } from './base-client.js';
+export type { HttpClientEnvConfig } from './base-client.js';
+export { FrameworkApiError } from './errors/framework-error.js';
+export type { ILogger } from './logging/logger.interface.js';

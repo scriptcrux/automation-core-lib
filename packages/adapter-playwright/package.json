@@ -1,20 +1,33 @@
 {
-    "name": "@script-crux/adapter-playwright",
-    "version": "1.0.0",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "publishConfig": {
-        "access": "public"
+  "name": "@script-crux/adapter-playwright",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
-    "scripts": {
-        "build": "tsc"
-    },
-    "dependencies": {
-        "@reportportal/agent-js-playwright": "^5.4.1",
-        "@script-crux/core-shared": "workspace:*",
-        "dotenv": "^17.4.2"
-    },
-    "peerDependencies": {
-        "@playwright/test": "^1.40.0"
+    "./reporter": {
+      "types": "./dist/listener/testReporter.d.ts",
+      "import": "./dist/listener/testReporter.js",
+      "default": "./dist/listener/testReporter.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@reportportal/agent-js-playwright": "^5.4.1",
+    "@script-crux/core-shared": "workspace:*",
+    "dotenv": "^17.4.2"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
 }

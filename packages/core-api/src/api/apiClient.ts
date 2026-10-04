@@ -1,6 +1,6 @@
 import { ConfigManager, TestLogger } from '@script-crux/core-shared';
-import { HTTP_HEADERS } from '../constants/httpHeaders'
-import { MIME_TYPES } from '../constants/mimeTypes'
+import { HTTP_HEADERS } from '../constants/httpHeaders.js';
+import { MIME_TYPES } from '../constants/mimeTypes.js';
 
 export class ApiClient {
   private baseUrl: string;
@@ -20,14 +20,14 @@ export class ApiClient {
       method: 'GET',
       headers: {
         [HTTP_HEADERS.ACCEPT]: MIME_TYPES.APPLICATION_JSON,
-        ...headers,
-      },
+        ...headers
+      }
     });
 
     if (!response.ok) {
       throw new Error(`[API EXCEPTION] Request failed with status code: ${response.status}`);
     }
 
-    return await response.json() as T;
+    return (await response.json()) as T;
   }
 }

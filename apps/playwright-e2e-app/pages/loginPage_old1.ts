@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage, Step } from "@script-crux/adapter-playwright";
+import { Locator, Page } from '@playwright/test';
+import { BasePage, Step } from '@script-crux/adapter-playwright';
 
 export class LoginPage extends BasePage {
   private readonly usernameInput: Locator;
@@ -15,11 +15,11 @@ export class LoginPage extends BasePage {
   }
 
   // 2. Decorate business workflows to print unified logs automatically!
-  @Step("User fills out authentication forms and clicks submit")
+  @Step('User fills out authentication forms and clicks submit')
   async loginWithUserCredentials(user: string, pass: string): Promise<void> {
-    await this.fillInputField(this.usernameInput, user, "Username Input Box");
-    await this.fillInputField(this.passwordInput, pass, "Password Input Box");
-    await this.clickElement(this.loginButton, "Submit Login Action Button");
+    await this.fillInputField(this.usernameInput, user, 'Username Input Box');
+    await this.fillInputField(this.passwordInput, pass, 'Password Input Box');
+    await this.clickElement(this.loginButton, 'Submit Login Action Button');
   }
 
   //  @Step('Login with demo credentials')

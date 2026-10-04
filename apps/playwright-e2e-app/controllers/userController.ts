@@ -11,9 +11,7 @@ export class UserController extends BaseApi {
     const response = await this.post(PRODUCT_ENDPOINTS.USERS, payload);
 
     if (!response.ok()) {
-      throw new Error(
-        `[ACCOUNT CREATION FAILED]: Server dropped status code ${response.status()}`,
-      );
+      throw new Error(`[ACCOUNT CREATION FAILED]: Server dropped status code ${response.status()}`);
     }
   }
 }

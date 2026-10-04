@@ -1,7 +1,6 @@
-// packages/core-shared/src/logger/logger.ts
-type LogLevel = 'INFO' | 'ERROR' | 'WARN';
+import { ILogger } from '../types/common.types.js';
 
-export class TestLogger {
+export class TestLogger implements ILogger {
   static info(message: string): void {
     console.log(`[INFO] [${new Date().toISOString()}]: ${message}`);
   }
@@ -13,4 +12,18 @@ export class TestLogger {
   static warn(message: string): void {
     console.warn(`[WARN] [${new Date().toISOString()}]: ${message}`);
   }
+
+  info(message: string): void {
+    TestLogger.info(message);
+  }
+
+  warn(message: string): void {
+    TestLogger.warn(message);
+  }
+
+  error(message: string): void {
+    TestLogger.error(message);
+  }
 }
+
+export const defaultLogger: ILogger = new TestLogger();

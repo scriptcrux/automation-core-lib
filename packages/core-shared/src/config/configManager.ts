@@ -22,26 +22,23 @@ export class ConfigManager {
     TestLogger.info(`Initializing framework configurations for: [${currentEnv}]`);
 
     // Assign fallback URLs based on environment variables or explicit defaults
-    const baseUrl = process.env.BASE_URL || `https://${currentEnv.toLowerCase()}.saucedemo.com`;
+    const baseUrl = process.env.BASE_URL || 'https://www.saucedemo.com';
 
     return {
       envName: currentEnv,
-      baseUrl,
+      baseUrl
     };
   }
 
-   static getReportPortalConfig(): ReportPortalConfig {
+  static getReportPortalConfig(): ReportPortalConfig {
     const enabled = process.env.RP_ENABLED === 'true';
     const apiKey = process.env.RP_API_KEY?.trim() ?? '';
     const endpoint = process.env.RP_ENDPOINT?.trim() ?? '';
     const project = process.env.RP_PROJECT?.trim() ?? '';
-    const launchName =
-      process.env.RP_LAUNCH_NAME?.trim() ||
-      `SUT_Automation_Run_${this.getEnvironment()}`;
+    const launchName = process.env.RP_LAUNCH_NAME?.trim() || `SUT_Automation_Run_${this.getEnvironment()}`;
 
     const description =
-      process.env.RP_DESCRIPTION?.trim() ||
-      'Automated execution run driven via core infrastructure framework.';
+      process.env.RP_DESCRIPTION?.trim() || 'Automated execution run driven via core infrastructure framework.';
 
     const attributes: ReportPortalAttribute[] = [
       { key: 'Environment', value: this.getEnvironment() },
@@ -58,7 +55,7 @@ export class ConfigManager {
         description,
         attributes,
         includeTestSteps: true, // ◀️ Direct flat property mapping
-        uploadTrace: false,     // ◀️ Direct flat property mapping
+        uploadTrace: false // ◀️ Direct flat property mapping
       };
     }
 
@@ -82,7 +79,7 @@ export class ConfigManager {
         description,
         attributes,
         includeTestSteps: true, // ◀️ Direct flat property mapping
-        uploadTrace: false,     // ◀️ Direct flat property mapping
+        uploadTrace: false // ◀️ Direct flat property mapping
       };
     }
 
@@ -95,11 +92,7 @@ export class ConfigManager {
       description,
       attributes,
       includeTestSteps: true, // ◀️ Direct flat property mapping
-      uploadTrace: false,     // ◀️ Direct flat property mapping
+      uploadTrace: false // ◀️ Direct flat property mapping
     };
   }
 }
-
-
-
-

@@ -20,4 +20,3 @@ export interface ReportPortalConfig {
   includeTestSteps: boolean;
   uploadTrace: boolean;
 }
-

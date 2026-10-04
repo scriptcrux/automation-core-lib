@@ -19,3 +19,7 @@ export const companyAutomationRules = [
     }
   }
 ];
+
+export default companyAutomationRules;
+
+

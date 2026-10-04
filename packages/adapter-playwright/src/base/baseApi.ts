@@ -11,19 +11,11 @@ export abstract class BaseApi {
     return this.send('GET', url, { headers });
   }
 
-  protected async post<TPayload>(
-    url: string,
-    payload?: TPayload,
-    headers?: HeadersMap,
-  ): Promise<APIResponse> {
+  protected async post<TPayload>(url: string, payload?: TPayload, headers?: HeadersMap): Promise<APIResponse> {
     return this.send('POST', url, { data: payload, headers });
   }
 
-  protected async put<TPayload>(
-    url: string,
-    payload?: TPayload,
-    headers?: HeadersMap,
-  ): Promise<APIResponse> {
+  protected async put<TPayload>(url: string, payload?: TPayload, headers?: HeadersMap): Promise<APIResponse> {
     return this.send('PUT', url, { data: payload, headers });
   }
 
@@ -34,14 +26,14 @@ export abstract class BaseApi {
   private async send(
     method: HttpMethod,
     url: string,
-    options: { data?: unknown; headers?: HeadersMap } = {},
+    options: { data?: unknown; headers?: HeadersMap } = {}
   ): Promise<APIResponse> {
     TestLogger.info(`[HTTP ${method}] ${url}`);
 
     const response = await this.request.fetch(url, {
       method,
       headers: options.headers,
-      data: options.data,
+      data: options.data
     });
 
     this.logResponse(method, url, response);

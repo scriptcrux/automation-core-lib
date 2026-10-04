@@ -12,16 +12,14 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.5.0",
-    "mongodb": "^7.3.0",
-    "pg": "^8.22.0"
-  },
-  "devDependencies": {
-    "@types/mongodb": "^4.0.7",
-    "@types/pg": "^8.20.0"
+    "@faker-js/faker": "^10.5.0"
   },
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
     "./configs/eslint": "./configs/eslint.config.js",
     "./configs/prettier": "./configs/prettier.config.js"
   }

@@ -1,11 +1,15 @@
 {
   "name": "core-lib-root",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "pnpm -r run build",
+    "lint": "eslint --fix",
+    "format": "prettier --write .",
     "prepare": "husky"
   },
+
   "lint-staged": {
     "packages/**/*.ts": [
       "eslint --fix",

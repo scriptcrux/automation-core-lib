@@ -42,10 +42,9 @@
 // //   await expect(page.locator('#flash')).toContainText('You logged into a secure area!');
 // // });
 
-
 // Inside your individual SUT application repository test file
 import { baseUiTest, expect } from '@script-crux/adapter-playwright';
-import { PRODUCT_ENDPOINTS } from "../types/endpoints.js"
+import { PRODUCT_ENDPOINTS } from '../types/endpoints.js';
 import { LoginPage } from '../pages/loginPage.js';
 import { UserController } from '../controllers/userController.js';
 import { DataGenerator } from '@script-crux/core-shared';
@@ -60,13 +59,13 @@ import { DataGenerator } from '@script-crux/core-shared';
 
 //   // 2. Immediately execute browser assertions using that pre-seeded database state
 //   await loginPage.loginWithUserCredentials('api_seeded_user', 'secure_password_123');
-  
+
 //   await expect(page).toHaveURL(/.*inventory.html/);
 // });
 
 baseUiTest('Should execute business workflows with unified logs', async ({ page, apiContext }) => {
   const loginPage = new LoginPage(page);
-  
+
   // 1. Instantiate your API controller using the native context fixture
   const userController = new UserController(apiContext);
   const fakeUser = DataGenerator.generateUser();
@@ -74,11 +73,10 @@ baseUiTest('Should execute business workflows with unified logs', async ({ page,
   // 2. Clean, high-level background data seeding with automatic centralized logging!
   await userController.createNewAccount({
     username: fakeUser.userName,
-    password: fakeUser.password,
+    password: fakeUser.password
   });
 
   // 3. Immediately transition to browser UI validations
   await loginPage.loginWithUserCredentials(fakeUser.userName, fakeUser.password);
   await expect(page).toHaveURL(/.*saucedemo.com/);
 });
-
