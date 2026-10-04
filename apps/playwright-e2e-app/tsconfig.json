@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@script-crux/adapter-playwright": [
+        "../../packages/adapter-playwright/src/index.ts"
+      ],
+      "@script-crux/core-shared": ["../../packages/core-shared/src/index.ts"],
+      "@script-crux/core-api": ["../../packages/core-api/src/index.ts"]
+    }
+  },
+  "include": ["**/*"]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "@script-crux/adapter-axios",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@script-crux/core-shared": "workspace:*",
+        "axios": "^1.7.9"
+    },
+    "include": [
+        "src/**/*",
+        "src/types/axios-retry.d.ts"
+    ]
+}

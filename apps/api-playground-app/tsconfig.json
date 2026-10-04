@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "ES2022",
+        "module": "CommonJS",
+        "rootDir": ".",
+        "types": [
+            "mocha",
+            "chai"
+        ]
+    },
+    "include": [
+        "index.ts"
+    ]
+}

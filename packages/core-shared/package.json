@@ -1,0 +1,28 @@
+{
+  "name": "@script-crux/core-shared",
+  "version": "1.0.0",
+  "description": "Cross-framework core library for Playwright, Cypress, and WDIO",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "mongodb": "^7.3.0",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "@types/pg": "^8.20.0"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./configs/eslint": "./configs/eslint.config.js",
+    "./configs/prettier": "./configs/prettier.config.js"
+  }
+}
