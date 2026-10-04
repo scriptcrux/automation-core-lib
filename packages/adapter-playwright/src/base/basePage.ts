@@ -1,11 +1,52 @@
 import { Page, Locator } from '@playwright/test';
 import { TestLogger } from '@script-crux/core-shared';
+import { NetworkMocking, MockResponseOptions } from '../utils/networkMocking.js';
+import { SoftAssert } from '../utils/softAssert.js';
 
 export abstract class BasePage {
   protected page: Page;
 
   constructor(page: Page) {
     this.page = page;
+  }
+
+  /**
+   * Returns the underlying Playwright Page instance
+   */
+  public getPage(): Page {
+    return this.page;
+  }
+
+  /**
+   * Creates a new SoftAssert collector for multi-step UI verifications
+   */
+  public createSoftAssert(): SoftAssert {
+    return new SoftAssert();
+  }
+
+  /**
+   * Mocks a network endpoint for this page
+   */
+  public async mockEndpoint(urlPattern: string | RegExp, options: MockResponseOptions): Promise<void> {
+    await NetworkMocking.mockEndpoint(this.page, urlPattern, options);
+  }
+
+  /**
+   * Simulates a microservice failure / HTTP error on an endpoint
+   */
+  public async mockServiceFailure(
+    urlPattern: string | RegExp,
+    status: number = 500,
+    errorMessage?: string
+  ): Promise<void> {
+    await NetworkMocking.mockServiceFailure(this.page, urlPattern, status, errorMessage);
+  }
+
+  /**
+   * Clears active network mocks
+   */
+  public async clearNetworkMocks(urlPattern?: string | RegExp): Promise<void> {
+    await NetworkMocking.clearMocks(this.page, urlPattern);
   }
 
   /**

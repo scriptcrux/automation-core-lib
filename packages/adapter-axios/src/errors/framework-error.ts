@@ -9,3 +9,15 @@ export class FrameworkApiError extends Error {
     this.code = code;
   }
 }
+
+export class ContractValidationError extends Error {
+  public receivedData: unknown;
+  public validationErrors?: unknown;
+
+  constructor(message: string, receivedData: unknown, validationErrors?: unknown) {
+    super(message);
+    this.name = 'ContractValidationError';
+    this.receivedData = receivedData;
+    this.validationErrors = validationErrors;
+  }
+}

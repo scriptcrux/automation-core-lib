@@ -1,10 +1,6 @@
 import { TestLogger } from '../utils/logger.js';
 import { EnvironmentConfig, ReportPortalConfig, ReportPortalAttribute } from '../types/config.types.js';
-
-// export interface EnvironmentConfig {
-//   envName: string;
-//   baseUrl: string;
-// }
+import { EnvValidator, EnvSchema } from './envValidator.js';
 
 export class ConfigManager {
   /**
@@ -28,6 +24,16 @@ export class ConfigManager {
       envName: currentEnv,
       baseUrl
     };
+  }
+
+  /**
+   * Validates custom application environment configuration against a declarative schema
+   */
+  static getValidatedConfig<T extends Record<string, any>>(
+    schema: EnvSchema<T>,
+    sourceEnv?: Record<string, string | undefined>
+  ): T {
+    return EnvValidator.validateAndParse<T>(schema, sourceEnv);
   }
 
   static getReportPortalConfig(): ReportPortalConfig {
